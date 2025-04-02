@@ -19,6 +19,7 @@
 #display {
     text-align: right;
     padding: 5px;
+    height: 40px;
 }
 
 #digits {
