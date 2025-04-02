@@ -12,7 +12,7 @@
 }
 
 #display,
-#digits button {
+#panel button {
     font-size: 35px;
 }
 
@@ -22,11 +22,11 @@
     height: 40px;
 }
 
-#digits {
+#panel {
     display: flex;
     flex-wrap: wrap;
 }
 
-#digits button {
+#panel button {
     flex: 1 1 25%;
 }
