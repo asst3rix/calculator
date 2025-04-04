@@ -40,7 +40,7 @@ operators.forEach((localOperator) => {
         }
         firstNumber = display.textContent;
         operator = localOperator.textContent;
-        testOperator = true;
+        operatorFlag = true;
     })
 });
 
