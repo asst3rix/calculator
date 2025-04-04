@@ -45,6 +45,7 @@ const operators = document.querySelectorAll(".operators");
 const clear = document.querySelector("#clear");
 const egual = document.querySelector("#egual");
 const minus = document.querySelector("#minus");
+const percentage = document.querySelector("#percentage");
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
@@ -81,4 +82,8 @@ clear.addEventListener("click", () => {
 
 minus.addEventListener("click", () => {
     display.textContent = "-" + display.textContent;
+});
+
+percentage.addEventListener("click", () => {
+    display.textContent = parseInt(display.textContent) * 0.01;
 });
