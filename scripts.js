@@ -49,10 +49,15 @@ const percentage = document.querySelector("#percentage");
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
+        if (display.textContent.at(0) === "0") {
+            display.textContent = display.textContent.slice(1);
+        }
+
         if (testOperator) {
             display.textContent = "";
             testOperator = false;
         }
+
         display.textContent = display.textContent + number.textContent;
     })
 });
@@ -62,9 +67,6 @@ operators.forEach((localOperator) => {
         firstNumber = display.textContent;
         operator = localOperator.textContent;
         testOperator = true;
-
-        console.log(firstNumber);
-        console.log(operator);
     })
 });
 
@@ -74,7 +76,7 @@ egual.addEventListener("click", () => {
 });
 
 clear.addEventListener("click", () => {
-    display.textContent = "";
+    display.textContent = "0";
     firstNumber = 0;
     secondNumber = 0;
     operator = "";
