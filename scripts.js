@@ -83,7 +83,11 @@ clear.addEventListener("click", () => {
 });
 
 minus.addEventListener("click", () => {
-    display.textContent = "-" + display.textContent;
+    if (display.textContent.at(0) === "-") {
+        display.textContent = display.textContent.slice(1);
+    } else {
+        display.textContent = "-" + display.textContent;
+    }
 });
 
 percentage.addEventListener("click", () => {
