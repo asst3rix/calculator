@@ -39,11 +39,11 @@ const number2 = 0;
 const operator = "";
 
 const display = document.querySelector("#display");
-const digits = document.querySelectorAll("#panel .digits");
+const numbers = document.querySelectorAll(".numbers");
 const clear = document.querySelector("#clear");
 
-digits.forEach((digit) => {
-    digit.addEventListener("click", () => { display.textContent = display.textContent + digit.textContent })
+numbers.forEach((number) => {
+    number.addEventListener("click", () => { display.textContent = display.textContent + number.textContent })
 });
 
 clear.addEventListener("click", () => { display.textContent = "" });
