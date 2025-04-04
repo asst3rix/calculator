@@ -4,7 +4,7 @@ let firstNumber = false;
 let secondNumber = false;
 let operator = "";
 let testOperator = false;
-const displayLimit = 14;
+const displayLimit = 13;
 
 const display = document.querySelector("#display");
 const numbers = document.querySelectorAll(".numbers");
