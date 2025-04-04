@@ -26,7 +26,9 @@ numbers.forEach((number) => {
             testOperator = false;
         }
 
-        display.textContent = display.textContent + number.textContent;
+        if (display.textContent.length < 13) {
+            display.textContent = display.textContent + number.textContent;
+        }
     })
 });
 
@@ -44,7 +46,8 @@ operators.forEach((localOperator) => {
 egual.addEventListener("click", () => {
     if (firstNumber !== false) {
         secondNumber = display.textContent;
-        display.textContent = operate(parseInt(firstNumber), parseInt(secondNumber), operator);
+        let result = operate(parseInt(firstNumber), parseInt(secondNumber), operator);
+        display.textContent = result.toString().slice(0,14);
     }
 });
 
