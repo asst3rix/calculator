@@ -82,7 +82,11 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / b;
+    if (b === 0) {
+        return "Nope.";
+    } else {
+        return a / b;
+    }
 }
 
 function operate(number1, number2, operator) {
