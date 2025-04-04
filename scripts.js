@@ -42,8 +42,10 @@ operators.forEach((localOperator) => {
 });
 
 egual.addEventListener("click", () => {
-    secondNumber = display.textContent;
-    display.textContent = operate(parseInt(firstNumber), parseInt(secondNumber), operator);
+    if (firstNumber !== false) {
+        secondNumber = display.textContent;
+        display.textContent = operate(parseInt(firstNumber), parseInt(secondNumber), operator);
+    }
 });
 
 clear.addEventListener("click", () => {
