@@ -3,7 +3,7 @@
 let firstNumber = false;
 let secondNumber = false;
 let operator = "";
-let testOperator = false;
+let operatorFlag = false;
 const displayLimit = 13;
 
 const display = document.querySelector("#display");
@@ -22,9 +22,9 @@ numbers.forEach((number) => {
             display.textContent = display.textContent.slice(1);
         }
 
-        if (testOperator) {
+        if (operatorFlag) {
             display.textContent = "";
-            testOperator = false;
+            operatorFlag = false;
         }
 
         if (display.textContent.length < displayLimit) {
