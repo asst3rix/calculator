@@ -44,6 +44,7 @@ const numbers = document.querySelectorAll(".numbers");
 const operators = document.querySelectorAll(".operators");
 const clear = document.querySelector("#clear");
 const egual = document.querySelector("#egual");
+const minus = document.querySelector("#minus");
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
@@ -76,4 +77,8 @@ clear.addEventListener("click", () => {
     firstNumber = 0;
     secondNumber = 0;
     operator = "";
+});
+
+minus.addEventListener("click", () => {
+    display.textContent = "-" + display.textContent;
 });
