@@ -34,16 +34,46 @@ function operate(number1, number2, operator) {
     }
 }
 
-const number1 = 0;
-const number2 = 0;
-const operator = "";
+let firstNumber = 0;
+let secondNumber = 0;
+let operator = "";
+let testOperator = false;
 
 const display = document.querySelector("#display");
 const numbers = document.querySelectorAll(".numbers");
+const operators = document.querySelectorAll(".operators");
 const clear = document.querySelector("#clear");
+const egual = document.querySelector("#egual");
 
 numbers.forEach((number) => {
-    number.addEventListener("click", () => { display.textContent = display.textContent + number.textContent })
+    number.addEventListener("click", () => {
+        if (testOperator) {
+            display.textContent = "";
+            testOperator = false;
+        }
+        display.textContent = display.textContent + number.textContent;
+    })
 });
 
-clear.addEventListener("click", () => { display.textContent = "" });
+operators.forEach((localOperator) => {
+    localOperator.addEventListener("click", () => {
+        firstNumber = display.textContent;
+        operator = localOperator.textContent;
+        testOperator = true;
+
+        console.log(firstNumber);
+        console.log(operator);
+    })
+});
+
+egual.addEventListener("click", () => {
+    secondNumber = display.textContent;
+    display.textContent = operate(parseInt(firstNumber), parseInt(secondNumber), operator);
+});
+
+clear.addEventListener("click", () => {
+    display.textContent = "";
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = "";
+});
