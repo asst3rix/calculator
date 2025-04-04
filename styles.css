@@ -12,7 +12,8 @@
 }
 
 #display,
-#panel button {
+#panel button,
+#panelLastRow button {
     font-size: 35px;
 }
 
@@ -22,11 +23,18 @@
     height: 40px;
 }
 
-#panel {
+#panel,
+#panelLastRow {
     display: flex;
     flex-wrap: wrap;
 }
 
-#panel button {
+#panel button,
+#panelLastRow button:nth-child(2),
+#panelLastRow button:nth-child(3) {
     flex: 1 1 25%;
+}
+
+#panelLastRow button:nth-child(1) {
+    flex: 1 1 50%;
 }
