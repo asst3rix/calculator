@@ -33,11 +33,7 @@ numbers.forEach((number) => {
 
         if (egualFlag) {
             display.textContent = "";
-            firstNumber = false;
-            secondNumber = false;
-            operator = "";
-            egualFlag = false;
-            commaFlag = false;
+            resetValues();
         }
 
         if (display.textContent.length < displayLimit) {
@@ -68,11 +64,7 @@ egual.addEventListener("click", () => {
 
 clear.addEventListener("click", () => {
     display.textContent = "0";
-    firstNumber = false;
-    secondNumber = false;
-    operator = "";
-    egualFlag = false;
-    commaFlag = false;
+    resetValues();
 });
 
 minus.addEventListener("click", () => {
@@ -134,4 +126,12 @@ function operate(number1, number2, operator) {
             return divide(number1, number2);
             break;
     }
+}
+
+function resetValues() {
+    firstNumber = false;
+    secondNumber = false;
+    operator = "";
+    egualFlag = false;
+    commaFlag = false;
 }
