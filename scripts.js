@@ -5,6 +5,7 @@ let secondNumber = false;
 let operator = "";
 let operatorFlag = false;
 let egualFlag = false;
+let commaFlag = false;
 const displayLimit = 13;
 
 const display = document.querySelector("#display");
@@ -14,6 +15,7 @@ const clear = document.querySelector("#clear");
 const egual = document.querySelector("#egual");
 const minus = document.querySelector("#minus");
 const percentage = document.querySelector("#percentage");
+const comma = document.querySelector("#comma");
 
 /*** EVENT LISTENERS ***/
 
@@ -26,6 +28,7 @@ numbers.forEach((number) => {
         if (operatorFlag) {
             display.textContent = "";
             operatorFlag = false;
+            commaFlag = false;
         }
 
         if (egualFlag) {
@@ -34,6 +37,7 @@ numbers.forEach((number) => {
             secondNumber = false;
             operator = "";
             egualFlag = false;
+            commaFlag = false;
         }
 
         if (display.textContent.length < displayLimit) {
@@ -56,7 +60,7 @@ operators.forEach((localOperator) => {
 egual.addEventListener("click", () => {
     if (firstNumber !== false) {
         secondNumber = display.textContent;
-        let result = operate(parseInt(firstNumber), parseInt(secondNumber), operator);
+        let result = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
         display.textContent = result.toString().slice(0, displayLimit);
     }
     egualFlag = true;
@@ -67,6 +71,8 @@ clear.addEventListener("click", () => {
     firstNumber = false;
     secondNumber = false;
     operator = "";
+    egualFlag = false;
+    commaFlag = false;
 });
 
 minus.addEventListener("click", () => {
@@ -79,6 +85,13 @@ minus.addEventListener("click", () => {
 
 percentage.addEventListener("click", () => {
     display.textContent = parseInt(display.textContent) * 0.01;
+});
+
+comma.addEventListener("click", () => {
+    if (!commaFlag) {
+        display.textContent = display.textContent + comma.textContent;
+        commaFlag = true;
+    }
 });
 
 /*** FUNCTIONS ***/
