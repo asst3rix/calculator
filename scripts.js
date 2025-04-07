@@ -4,7 +4,7 @@ let firstNumber = false;
 let secondNumber = false;
 let operator = "";
 let operatorFlag = false;
-let egualFlag = false;
+let equalFlag = false;
 let commaFlag = false;
 const displayLimit = 13;
 
@@ -12,7 +12,7 @@ const display = document.querySelector("#display");
 const numbers = document.querySelectorAll(".numbers");
 const operators = document.querySelectorAll(".operators");
 const clear = document.querySelector("#clear");
-const egual = document.querySelector("#egual");
+const equal = document.querySelector("#equal");
 const minus = document.querySelector("#minus");
 const percentage = document.querySelector("#percentage");
 const comma = document.querySelector("#comma");
@@ -31,7 +31,7 @@ numbers.forEach((number) => {
             commaFlag = false;
         }
 
-        if (egualFlag) {
+        if (equalFlag) {
             display.textContent = "";
             resetValues();
         }
@@ -53,13 +53,13 @@ operators.forEach((localOperator) => {
     })
 });
 
-egual.addEventListener("click", () => {
+equal.addEventListener("click", () => {
     if (firstNumber !== false) {
         secondNumber = display.textContent;
         let result = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
         display.textContent = result.toString().slice(0, displayLimit);
     }
-    egualFlag = true;
+    equalFlag = true;
 });
 
 clear.addEventListener("click", () => {
@@ -132,6 +132,6 @@ function resetValues() {
     firstNumber = false;
     secondNumber = false;
     operator = "";
-    egualFlag = false;
+    equalFlag = false;
     commaFlag = false;
 }
