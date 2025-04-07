@@ -4,6 +4,7 @@ let firstNumber = false;
 let secondNumber = false;
 let operator = "";
 let operatorFlag = false;
+let egualFlag = false;
 const displayLimit = 13;
 
 const display = document.querySelector("#display");
@@ -27,6 +28,14 @@ numbers.forEach((number) => {
             operatorFlag = false;
         }
 
+        if (egualFlag) {
+            display.textContent = "";
+            firstNumber = false;
+            secondNumber = false;
+            operator = "";
+            egualFlag = false;
+        }
+
         if (display.textContent.length < displayLimit) {
             display.textContent = display.textContent + number.textContent;
         }
@@ -36,7 +45,7 @@ numbers.forEach((number) => {
 operators.forEach((localOperator) => {
     localOperator.addEventListener("click", () => {
         if (firstNumber !== false) {
-            display.textContent = operate(parseInt(firstNumber), parseInt(display.textContent), operator);   
+            display.textContent = operate(parseInt(firstNumber), parseInt(display.textContent), operator);
         }
         firstNumber = display.textContent;
         operator = localOperator.textContent;
@@ -48,8 +57,9 @@ egual.addEventListener("click", () => {
     if (firstNumber !== false) {
         secondNumber = display.textContent;
         let result = operate(parseInt(firstNumber), parseInt(secondNumber), operator);
-        display.textContent = result.toString().slice(0,displayLimit);
+        display.textContent = result.toString().slice(0, displayLimit);
     }
+    egualFlag = true;
 });
 
 clear.addEventListener("click", () => {
