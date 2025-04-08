@@ -70,6 +70,8 @@ equal.addEventListener("click", () => {
     if (firstNumber !== false) {
         secondNumber = display.textContent;
         let result = operate(firstNumber, secondNumber, operator);
+        // To counter add(0.78,2) = 2.7800000000000002.
+        result = Math.round(result * 1e10) / 1e10;
         display.textContent = result.toString().slice(0, displayLimit);
     }
     equalFlag = true;
