@@ -89,7 +89,7 @@ minus.addEventListener("click", () => {
 });
 
 percentage.addEventListener("click", () => {
-    display.textContent = parseFloat(display.textContent) * 0.01;
+    display.textContent = operate(display.textContent, "0.01", "*");
 });
 
 comma.addEventListener("click", () => {
