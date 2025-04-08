@@ -45,7 +45,7 @@ numbers.forEach((number) => {
 operators.forEach((localOperator) => {
     localOperator.addEventListener("click", () => {
         if (firstNumber !== false) {
-            display.textContent = operate(parseInt(firstNumber), parseInt(display.textContent), operator);
+            display.textContent = operate(firstNumber, display.textContent, operator);
         }
         firstNumber = display.textContent;
         operator = localOperator.textContent;
@@ -56,7 +56,7 @@ operators.forEach((localOperator) => {
 equal.addEventListener("click", () => {
     if (firstNumber !== false) {
         secondNumber = display.textContent;
-        let result = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
+        let result = operate(firstNumber, secondNumber, operator);
         display.textContent = result.toString().slice(0, displayLimit);
     }
     equalFlag = true;
@@ -80,31 +80,37 @@ percentage.addEventListener("click", () => {
 });
 
 comma.addEventListener("click", () => {
-    if (!commaFlag) {
-        display.textContent = display.textContent + comma.textContent;
+    if (equalFlag) {
+        display.textContent = "0.";
         commaFlag = true;
+    }
+    else {
+        if (!commaFlag) {
+            display.textContent = display.textContent + comma.textContent;
+            commaFlag = true;
+        }
     }
 });
 
 /*** FUNCTIONS ***/
 
 function add(a, b) {
-    return a + b;
+    return parseFloat(a) + parseFloat(b);
 }
 
 function subtract(a, b) {
-    return a - b;
+    return parseFloat(a) - parseFloat(b);
 }
 
 function multiply(a, b) {
-    return a * b;
+    return parseFloat(a) * parseFloat(b);
 }
 
 function divide(a, b) {
     if (b === 0) {
         return "Nope.";
     } else {
-        return a / b;
+        return parseFloat(a) / parseFloat(b);
     }
 }
 
