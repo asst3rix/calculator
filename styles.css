@@ -5,6 +5,7 @@
 }
 
 #calculator {
+    background-color: aliceblue;
     margin: 25px auto;
     width: 300px;
     border: 2px solid black;
@@ -12,30 +13,60 @@
     flex-direction: column;
 }
 
-#display,
-#panel button,
-#panelLastRow button {
-    font-size: 35px;
+#top {
+    padding: 10px;
+}
+
+#top,
+.numbers,
+#comma {
+    background-color: black;
 }
 
 #display {
+    background-color: white;
     text-align: right;
     padding: 5px;
     height: 40px;
+    font-size: 35px;
 }
 
-#panel,
-#panelLastRow {
+#panel {
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
+    box-sizing: border-box;
 }
 
-#panel button,
-#panelLastRow button:nth-child(2),
-#panelLastRow button:nth-child(3) {
-    flex: 1 1 25%;
+#panel button {
+    flex: 1 0 calc(25% - 10px);
+    font-size: 25px;
+    height: 58.5px;
+    font-weight: 700;
 }
 
-#panelLastRow button:nth-child(1) {
-    flex: 1 1 50%;
+#panel button.zero {
+    flex: 1 0 calc(50% - 7px);
+}
+
+#clear {
+    background-color: lightcoral;
+}
+
+.operators,
+#minus,
+#percentage,
+#equal {
+    background-color: rgb(165, 165, 165);
+}
+
+.numbers,
+.operators,
+#comma,
+#minus,
+#percentage,
+#clear,
+#equal {
+    color: aliceblue;
 }
