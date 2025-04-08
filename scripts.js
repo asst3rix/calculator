@@ -6,7 +6,7 @@ let operator = "";
 let operatorFlag = false;
 let equalFlag = false;
 let commaFlag = false;
-const displayLimit = 13;
+const displayLimit = 9;
 
 const display = document.querySelector("#display");
 const numbers = document.querySelectorAll(".numbers");
