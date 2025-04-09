@@ -26,6 +26,7 @@ const equal = document.querySelector("#equal");
 const minus = document.querySelector("#minus");
 const percentage = document.querySelector("#percentage");
 const comma = document.querySelector("#comma");
+const backspace = document.querySelector("#backspace");
 
 /*** EVENT LISTENERS ***/
 
@@ -121,6 +122,14 @@ comma.addEventListener("click", () => {
             display.textContent = display.textContent + comma.textContent;
             commaFlag = true;
         }
+    }
+});
+
+backspace.addEventListener("click", () => {
+    if (display.textContent.length === 1) {
+        display.textContent = "0";
+    } else {
+        display.textContent = display.textContent.slice(0, display.textContent.length - 1);
     }
 });
 
