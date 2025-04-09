@@ -12,14 +12,15 @@
 #calculator {
     background-color: aliceblue;
     margin: 25px auto;
-    width: 300px;
+    width: 400px;
     border: 2px solid black;
     display: flex;
     flex-direction: column;
 }
 
 #top {
-    padding: 10px;
+    padding: 15px;
+    flex: 00 auto;
 }
 
 #top,
@@ -33,22 +34,22 @@
     background-color: #aaa38a;
     text-align: right;
     padding: 5px;
-    font-size: 60px;
+    font-size: 90px;
 }
 
 #panel {
+    flex: 1 1 auto;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    box-sizing: border-box;
 }
 
 #panel button {
     flex: 1 0 calc(25% - 10px);
-    font-size: 25px;
-    height: 58.5px;
-    font-weight: 700;
+    font-size: 40px;
+    height: 70px;
+    font-weight: 500;
 }
 
 #clear,
