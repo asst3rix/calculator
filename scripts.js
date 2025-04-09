@@ -6,7 +6,17 @@ let operator = "";
 let operatorFlag = false;
 let equalFlag = false;
 let commaFlag = false;
+let numberFlag = false;
 const displayLimit = 9;
+
+function resetValues() {
+    firstNumber = false;
+    secondNumber = false;
+    operator = "";
+    equalFlag = false;
+    commaFlag = false;
+    numberFlag = false;
+}
 
 const display = document.querySelector("#display");
 const numbers = document.querySelectorAll(".numbers");
@@ -41,7 +51,7 @@ numbers.forEach((number) => {
                 display.textContent = "0.";
                 resetValues();
                 commaFlag = true;
-            // Else we go with a number not starting by 0.
+                // Else we go with a number not starting by 0.
             } else {
                 display.textContent = "";
                 resetValues();
@@ -51,18 +61,25 @@ numbers.forEach((number) => {
         if (display.textContent.length < displayLimit) {
             display.textContent = display.textContent + number.textContent;
         }
+
+        numberFlag = true;
     })
 });
 
 operators.forEach((localOperator) => {
     localOperator.addEventListener("click", () => {
-        // If firstNumber !== false, it means that we are on a multiple operation.
-        if (firstNumber !== false) {
-            display.textContent = operate(firstNumber, display.textContent, operator);
+        // We chack that we pressed on a number.
+        // This is for the case someone press a number and then press mutiples times an operator.
+        if (numberFlag) {
+            // If firstNumber !== false, it means that we are on a multiple operation.
+            if (firstNumber !== false) {
+                display.textContent = operate(firstNumber, display.textContent, operator);
+            }
+            firstNumber = display.textContent;
+            operator = localOperator.textContent;
+            operatorFlag = true;
+            numberFlag = false;
         }
-        firstNumber = display.textContent;
-        operator = localOperator.textContent;
-        operatorFlag = true;
     })
 });
 
@@ -147,12 +164,4 @@ function operate(number1, number2, operator) {
             return divide(number1, number2);
             break;
     }
-}
-
-function resetValues() {
-    firstNumber = false;
-    secondNumber = false;
-    operator = "";
-    equalFlag = false;
-    commaFlag = false;
 }
