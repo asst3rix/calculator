@@ -68,7 +68,7 @@ numbers.forEach((number) => {
 
 operators.forEach((localOperator) => {
     localOperator.addEventListener("click", () => {
-        // We chack that we pressed on a number.
+        // We check that we pressed on a number.
         // This is for the case someone press a number and then press mutiples times an operator.
         if (numberFlag) {
             // If firstNumber !== false, it means that we are on a multiple operation.
