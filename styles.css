@@ -6,6 +6,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Ubuntu Mono', Courier, monospace;
 }
 
@@ -33,7 +34,7 @@
     font-family: 'Digital-7', monospace;
     background-color: #aaa38a;
     text-align: right;
-    padding: 5px;
+    padding: 5px 10px 5px 5px;
     font-size: 90px;
 }
 
