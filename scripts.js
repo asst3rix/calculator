@@ -7,7 +7,7 @@ let operatorFlag = false;
 let equalFlag = false;
 let commaFlag = false;
 let numberFlag = false;
-const displayLimit = 9;
+const displayLimit = 8;
 
 function resetValues() {
     firstNumber = false;
@@ -32,37 +32,7 @@ const backspace = document.querySelector("#backspace");
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
-        // For cases like "0758". We remove the 0 at the beginning.
-        if (display.textContent.at(0) === "0" && display.textContent.at(1) !== ".") {
-            display.textContent = display.textContent.slice(1);
-        }
-
-        // If we just press an operator we clean the display.
-        // We then reset the operator and comma flags for a new number.
-        if (operatorFlag) {
-            display.textContent = "";
-            operatorFlag = false;
-            commaFlag = false;
-        }
-
-        // If we pressed equal
-        if (equalFlag) {
-            // and commaFlag at true, it means that the users has pressed "." right after the equal so we display "0.".
-            if (commaFlag) {
-                display.textContent = "0.";
-                resetValues();
-                commaFlag = true;
-                // Else we go with a number not starting by 0.
-            } else {
-                display.textContent = "";
-                resetValues();
-            }
-        }
-
-        if (display.textContent.length < displayLimit) {
-            display.textContent = display.textContent + number.textContent;
-        }
-
+        updateDisplay(number.textContent);
         numberFlag = true;
     })
 });
@@ -133,6 +103,10 @@ backspace.addEventListener("click", () => {
     }
 });
 
+document.addEventListener("keydown", (key) => {
+    updateDisplay(key.key);
+});
+
 /*** FUNCTIONS ***/
 
 function add(a, b) {
@@ -172,5 +146,38 @@ function operate(number1, number2, operator) {
         case "/":
             return divide(number1, number2);
             break;
+    }
+}
+
+function updateDisplay(value) {
+    // For cases like "0758". We remove the 0 at the beginning.
+    if (display.textContent.at(0) === "0" && display.textContent.at(1) !== ".") {
+        display.textContent = display.textContent.slice(1);
+    }
+
+    // If we just press an operator we clean the display.
+    // We then reset the operator and comma flags for a new number.
+    if (operatorFlag) {
+        display.textContent = "";
+        operatorFlag = false;
+        commaFlag = false;
+    }
+
+    // If we pressed equal
+    if (equalFlag) {
+        // and commaFlag at true, it means that the users has pressed "." right after the equal so we display "0.".
+        if (commaFlag) {
+            display.textContent = "0.";
+            resetValues();
+            commaFlag = true;
+            // Else we go with a number not starting by 0.
+        } else {
+            display.textContent = "";
+            resetValues();
+        }
+    }
+
+    if (display.textContent.length < displayLimit) {
+        display.textContent = display.textContent + value;
     }
 }
